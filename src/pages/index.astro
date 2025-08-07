@@ -1,24 +1,15 @@
 ---
-import NavBar from "@components/ui/navbar/NavBar.astro";
-import MainLayout from "../layout/MainLayout.astro";
+import { CarruselComponent } from "@components/home/carrusel/CarruselCOmponent";
+import MainComponent from "@components/home/main/MainComponent.astro";
+import Title from "@components/ui/title/Title.astro";
+import MainLayout from "src/layout/MainLayout.astro";
 ---
 
 <MainLayout>
-  <div
-    class="bg-[url(/Images/fondo6.webp)] bg-no-repeat bg-cover h-screen bg-center"
-  >
-    <div class="bg-black/20 h-full text-white">
-      <NavBar />
-      <div class="mt-52 flex justify-end m-auto max-w-8xl">
-        <div class="w-[31rem] mr-28">
-          <h1 class="text-5xl font-bold font-playfair">
-            La combinación perfecta para regalar✨
-          </h1>
-          <button class="mt-8 text-2xl bg-primary px-9 py-3 rounded-3xl font-playfair">
-            Personaliza tu regalo ahora
-          </button>
-        </div>
-      </div>
-    </div>
+  <MainComponent />
+
+  <div class="py-16">
+    <Title title="Artículos destacados" />
+    <CarruselComponent client:visible />
   </div>
 </MainLayout>
