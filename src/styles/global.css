@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "playfair";
+  src: url("/fonts/Playfair/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "lora-regular";
+  src: url("/fonts/lora/Lora-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "lora";
+  src: url("/fonts/lora/Lora-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  --color-primary: #122a4d;
+  --font-playfair: "playfair", serif;
+  --font-lora-semi-bold: "lora", serif;
+}
+
+.navigation-item {
+  @apply text-2xl px-3 rounded-lg transition-colors;
+  @apply hover:text-primary hover:bg-gray-400/50;
+}

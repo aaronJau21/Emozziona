@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import Logo from "public/emozziona-logo.jpg";
+
+// interface Props {
+//   estilos?: string;
+//   inicio?: boolean;
+// }
+
+interface NavigationItem {
+  label: string;
+  href: string;
+}
+
+// const { estilos, inicio }: Props = Astro.props;
+
+const navigationItems: NavigationItem[] = [
+  { label: "Inicio", href: "/" },
+  { label: "Productos", href: "/products" },
+  { label: "¿Quiénes somos?", href: "/historia" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="flex items-center justify-between m-auto max-w-5xl pt-5">
+  <div class="flex items-center gap-x-5">
+    <Image src={Logo} alt="Emozziona Logo" class="rounded-full w-28" />
+    <nav class="flex items-center gap-x-5">
+      {
+        navigationItems.map((item) => (
+          <div>
+            <a href={item.href} class="navigation-item font-lora-semi-bold">
+              {item.label}
+            </a>
+
+            {currentPath === item.href ? (
+              <div
+                transition:name="menu-line"
+                class="border-b-2 border-blue-500 mx-4"
+              />
+            ) : (
+              <div class="border-b-2 border-transparent" />
+            )}
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+
+  <div class="flex flex-row items-center gap-x-3">
+    <Icon name="instagra" size="39" />
+    <Icon name="whatsapp" size="39" />
+  </div>
+</div>
