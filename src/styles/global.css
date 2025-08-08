@@ -31,3 +31,18 @@
   @apply text-2xl px-3 rounded-lg transition-colors;
   @apply hover:text-primary hover:bg-gray-400/50;
 }
+
+/* Estilos para prevenir el flash del carrusel */
+.mySwiper {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mySwiper.swiper-initialized {
+  opacity: 1;
+}
+
+/* Asegurar que las imágenes del carrusel tengan un tamaño consistente */
+.mySwiper .swiper-slide img {
+  transition: transform 0.3s ease;
+}

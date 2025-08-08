@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 
@@ -12,12 +13,34 @@ interface CarruselItems {
 }
 
 export const CarruselComponent = () => {
+  const [isClient, setIsClient] = useState(false);
+  
   const items: CarruselItems[] = [
     { img: "/Images/home/imagen1.jpg" },
     { img: "/Images/home/Imagen2.jpg" },
     { img: "/Images/home/Imagen3.jpg" },
     { img: "/Images/home/Imagen4.jpg" },
   ];
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return (
+      <div className="flex justify-center items-center gap-2.5">
+        {items.slice(0, 3).map((item, index) => (
+          <div key={item.img} className="flex justify-center items-center">
+            <img
+              src={item.img}
+              alt="Imagen de los productos"
+              className="size-96 rounded-xl"
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <Swiper
@@ -35,6 +58,12 @@ export const CarruselComponent = () => {
       loop={true}
       modules={[FreeMode, Pagination, Autoplay]}
       className="mySwiper"
+      onInit={(swiper) => {
+        // Asegurar que el carrusel se inicialice correctamente
+        setTimeout(() => {
+          swiper.update();
+        }, 100);
+      }}
     >
       {items.map((item) => (
         <SwiperSlide key={item.img}>
@@ -43,6 +72,7 @@ export const CarruselComponent = () => {
               src={item.img}
               alt="Imagen de los productos"
               className="size-96 rounded-xl"
+              loading="eager"
             />
           </div>
         </SwiperSlide>

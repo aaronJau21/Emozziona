@@ -9,9 +9,9 @@ import CardComponent from "@components/home/cards/CardComponent.astro";
 <MainLayout>
   <MainComponent />
 
-  <section class="py-16">
+  <section class="py-16" data-aos="fade-up">
     <Title title="Artículos destacados" />
-    <CarruselComponent client:visible />
+    <CarruselComponent client:load />
   </section>
 
   <CardComponent />

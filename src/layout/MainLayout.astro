@@ -5,6 +5,9 @@ import { ClientRouter } from "astro:transitions";
 import FooterComponent from "@components/ui/footer/FooterComponent.astro";
 
 const url = Astro.url.pathname;
+
+import "aos/dist/aos.css";
+
 ---
 
 <html lang="en">
@@ -22,5 +25,12 @@ const url = Astro.url.pathname;
     <slot />
 
     <FooterComponent />
-  </body>
+  </body><script>
+    import AOS from "aos";
+    AOS.init({
+      duration: 800, // Duración de animación
+      easing: "ease-out", // Movimiento suave
+      once: true, // Se ejecuta solo una vez
+    });
+  </script>
 </html>
