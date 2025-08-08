@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Logo from "public/emozziona-logo.jpg";
+---
+
+<footer class="bg-[#B59A6D] py-10 text-white">
+  <div class="mx-auto max-w-7xl flex items-center">
+    <div class="flex-1 flex gap-x-5">
+      <div class="w-80">
+        <p>Para obtener ayuda, comuníquese con nosotros a través de</p>
+        <div class="flex gap-x-1 items-center cursor-pointer hover:text-primary transition-colors w-44">
+          <Icon
+            name="whatsapp"
+            size="39"
+            class=""
+          />
+          <span
+            >+51 959467609</span
+          >
+        </div>
+      </div>
+      <div class="w-72">
+        <p>Sigue nuestras cuentas en redes sociales</p>
+        <div class="flex gap-x-5">
+          <Icon
+            name="instagra"
+            size="39"
+            class="cursor-pointer hover:text-primary transition-colors"
+          />
+          <Icon
+            name="tiktok"
+            size="39"
+            class="cursor-pointer hover:text-primary transition-colors"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 flex justify-center">
+      <Image src={Logo} alt="Emozziona Logo" class="rounded-full size-32" />
+    </div>
+  </div>
+</footer>
