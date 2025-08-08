@@ -3,13 +3,17 @@ import { CarruselComponent } from "@components/home/carrusel/CarruselCOmponent";
 import MainComponent from "@components/home/main/MainComponent.astro";
 import Title from "@components/ui/title/Title.astro";
 import MainLayout from "src/layout/MainLayout.astro";
+import CardComponent from "@components/home/cards/CardComponent.astro";
 ---
 
 <MainLayout>
   <MainComponent />
 
-  <div class="py-16">
+  <section class="py-16">
     <Title title="Artículos destacados" />
     <CarruselComponent client:visible />
-  </div>
+  </section>
+
+  <CardComponent />
+
 </MainLayout>

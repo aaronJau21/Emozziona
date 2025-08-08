@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import Imagen1 from "public/Images/home/imagen1.jpg";
+import Imagen2 from "public/Images/home/Imagen2.jpg";
+
+interface ItemCard {
+  image: ImageMetadata;
+  title: string;
+  subtitle: string;
+  left?: boolean;
+  color?: boolean;
+}
+
+const itemsCards: ItemCard[] = [
+  {
+    image: Imagen1,
+    title: "Caja de regalo personalizada",
+    subtitle: "Crea el tuyo",
+  },
+  {
+    image: Imagen2,
+    title: "Caja de regalo personalizada",
+    subtitle: "Crea el tuyo",
+    left: true,
+    color: true,
+  },
+];
+---
+
+<section class="my-9 mx-auto max-w-[110rem]">
+  {
+    itemsCards.map((item) => (
+      <div
+        class:list={[
+          "flex",
+          { "flex-row": !item.left, "flex-row-reverse": item.left },
+        ]}
+      >
+        <div class="flex-1">
+          <Image src={item.image} alt={item.title} class="size-[55rem]" />
+        </div>
+        <div
+          class:list={[
+            "flex-1 text-gray-100",
+            { "bg-primary": !item.color, "bg-[#B59A6D]": item.color },
+          ]}
+        >
+          <div class="flex flex-col justify-center h-full ml-16">
+            <h4 class="uppercase text-xl font-bold font-playfair">
+              {item.subtitle}
+            </h4>
+            <h3 class="capitalize text-4xl font-bold font-playfair">
+              {item.title}
+            </h3>
+            <div class="w-[27rem] mt-9">
+              <p class="text-lg">Personaliza tus regalos según la ocasión.</p>
+              <p class="text-lg">
+                ¡Desde la caja hasta los artículos y las tarjetas!
+              </p>
+              <p class="my-5 text-lg">
+                Ya sean cumpleaños, aniversarios, graduaciones, Día de San
+                Valentín, Día de la Madre, Día del Padre y más.
+              </p>
+              <p class="text-lg">¡Box & Tale tiene todo para ti!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</section>
