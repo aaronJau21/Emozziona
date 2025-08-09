@@ -1,10 +1,40 @@
 ---
 import MainLayout from "src/layout/MainLayout.astro";
-
-
+import Cafe from "public/Images/historia/cafes.webp";
+import { Image } from "astro:assets";
 ---
 
-
 <MainLayout>
-    <h1>Historia</h1>
+  <main class="mx-auto max-w-7xl my-9">
+    <h1 class="text-2xl font-lora-semi-bold text-primary">¿Quiénes somos?</h1>
+    <div class="flex mt-5">
+      <Image src={Cafe} alt="Regalo de cafe" class="w-[31.8rem] rounded-lg"/>
+      <div class="flex-1 flex items-center">
+        <div class=" font-lora-regular px-7 text-justify text-gray-800">
+          <p>
+            En EMOZZIONA, somos un equipo de creadores apasionados por los
+            regalos y el merchandising con alma. Estamos aquí para ayudarte a
+            transformar un gesto en un recuerdo imborrable, llenando cada pieza
+            con sentimientos y emociones genuinas.
+          </p>
+          <p class="my-3">
+            Nuestra misión es simple, pero poderosa: ayudarte a fortalecer
+            lazos, ya sea para impulsar la marca de tu negocio, celebrar logros
+            de tu equipo o simplemente sorprender a un ser querido. Creemos que
+            un detalle bien pensado es una poderosa herramienta para comunicar
+            el aprecio y reflejar la esencia de una marca o una relación
+            personal.
+          </p>
+          <p>
+            Más que un proveedor, nos vemos como tus cómplices en cada
+            celebración. Estamos aquí para escucharte, entender tu intención y
+            crear soluciones personalizadas que emocionen. Con dedicación y
+            creatividad, nos comprometemos a ofrecerte regalos y merchandising
+            únicos y de alta calidad que hablen por sí mismos, impulsando la
+            conexión personal y el crecimiento de tu negocio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
 </MainLayout>

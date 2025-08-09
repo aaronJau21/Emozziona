@@ -24,6 +24,7 @@
 @theme {
   --color-primary: #122a4d;
   --font-playfair: "playfair", serif;
+  --font-lora-regular: "lora-regular", serif;
   --font-lora-semi-bold: "lora", serif;
 }
 

@@ -1,12 +1,63 @@
 ---
+import MenuCategory from "@components/products/menu-category/MenuCategory.astro";
+import Title from "@components/ui/title/Title.astro";
 import MainLayout from "src/layout/MainLayout.astro";
+import Imagen1 from "public/Images/home/Imagen2.jpg";
+import { Image } from "astro:assets";
 
+export interface ICategoria {
+  url: string;
+  name: string;
+}
 
+const categorias: ICategoria[] = [
+  { url: "/products?cat=corporativo", name: "Regalos Corporativo" },
+  { url: "/products?cat=merchandising", name: "Merchandising" },
+  { url: "/products?cat=casuales", name: "Regalos casuales" },
+];
 ---
 
-
 <MainLayout>
+  <main class="my-9">
+    <Title title="Productos" />
 
-    <h1>Productos</h1>
+    <div class="flex flex-row mx-auto max-w-7xl items-start">
+      <div class="mr-8 sticky top-8">
+        <MenuCategory categorias={categorias} />
+      </div>
+      <div class="flex-1 grid grid-cols-3 gap-5 px-9">
+        <!-- Cards -->
 
+        {
+          [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+            20, 21,
+          ].map((item) => (
+            <div class="w-64">
+              <div class="h-48">
+                <Image
+                  src={Imagen1}
+                  alt="Imagen 1"
+                  class="h-full rounded-2xl"
+                />
+              </div>
+              <div class="flex flex-col items-center">
+                <p class="text-primary font-bold font-lora-semi-bold text-lg">
+                  Nombre
+                </p>
+                <p class="text-primary font-bold font-lora-semi-bold text-lg">
+                  $ 49.00
+                </p>
+                <button class="bg-primary/90 text-white py-2 px-4 rounded font-lora-semi-bold cursor-pointer hover:bg-primary transition-all">
+                  Comprar
+                </button>
+              </div>
+            </div>
+          ))
+        }
+
+        <!-- End Cards -->
+      </div>
+    </div>
+  </main>
 </MainLayout>

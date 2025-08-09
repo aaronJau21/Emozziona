@@ -1,0 +1,27 @@
+---
+import type { ICategoria } from "src/pages/products/index.astro";
+
+interface Props {
+  categorias: ICategoria[];
+}
+
+const { categorias }: Props = Astro.props;
+---
+
+<div class="w-56 border border-[#B59A6D] p-3 rounded-xl">
+  <h2 class="mb-3 font-lora-regular font-semibold text-lg">Categorías</h2>
+  <ul>
+    {
+      categorias.map((categoria) => (
+        <li class="mb-2">
+          <a
+            class="text-lora-regular hover:bg-primary/90 hover:text-white hover:px-3 hover:py-1 hover:rounded"
+            href={categoria.url}
+          >
+            {categoria.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
