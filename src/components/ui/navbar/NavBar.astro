@@ -30,22 +30,75 @@ const currentPath = Astro.url.pathname;
     <Image src={Logo} alt="Emozziona Logo" class="rounded-full w-28" />
     <nav class="flex items-center gap-x-5">
       {
-        navigationItems.map((item) => (
-          <div>
-            <a href={item.href} class="navigation-item font-lora-semi-bold">
-              {item.label}
-            </a>
-
-            {currentPath === item.href ? (
+        navigationItems.map((item) =>
+          item.label === "Productos" ? (
+            <div class="relative group" tabindex="0">
+              <a href={item.href} class="navigation-item font-lora-semi-bold">
+                {item.label}
+              </a>
+              {/* Dropdown menu con animación y soporte para focus-within */}
               <div
-                transition:name="menu-line"
-                class="border-b-2 border-blue-500 mx-4"
-              />
-            ) : (
-              <div class="border-b-2 border-transparent" />
-            )}
-          </div>
-        ))
+                class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg z-20 text-primary font-lora-semi-bold
+                opacity-0 scale-95 translate-y-2
+                group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0
+                group-focus-within:opacity-100 group-focus-within:scale-100 group-focus-within:translate-y-0
+                transition-all duration-300 ease-out"
+              >
+                <ul class="py-2">
+                  <li>
+                    <a
+                      href="/products?cat=casual"
+                      class="block px-4 py-2 hover:bg-primary/50"
+                      tabindex="0"
+                    >
+                      Regalos Corporativo
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/products?cat=corporativo"
+                      class="block px-4 py-2 hover:bg-primary/50"
+                      tabindex="0"
+                    >
+                      Merchandising
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/products?cat=sanvalentin"
+                      class="block px-4 py-2 hover:bg-primary/50"
+                      tabindex="0"
+                    >
+                      Regalos casuales
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {currentPath === item.href ? (
+                <div
+                  transition:name="menu-line"
+                  class="border-b-2 border-blue-500 mx-4"
+                />
+              ) : (
+                <div class="border-b-2 border-transparent" />
+              )}
+            </div>
+          ) : (
+            <div>
+              <a href={item.href} class="navigation-item font-lora-semi-bold">
+                {item.label}
+              </a>
+              {currentPath === item.href ? (
+                <div
+                  transition:name="menu-line"
+                  class="border-b-2 border-blue-500 mx-4"
+                />
+              ) : (
+                <div class="border-b-2 border-transparent" />
+              )}
+            </div>
+          )
+        )
       }
     </nav>
   </div>
